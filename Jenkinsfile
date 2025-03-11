@@ -3,13 +3,13 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'mvn clean install'
-        echo 'Build Stage Successful'
+        build 'PES2UG22CS606-1'
+        sh 'g++ new.cpp -o output' 
       }
     }
     stage('Test') {
       steps {
-        sh 'mvn test'
+        sh './output'
         echo 'Test Stage Successful'
         post {
           always {
@@ -20,7 +20,6 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'mvn deploy'
         echo 'Deployment Successful'
       }
     }
